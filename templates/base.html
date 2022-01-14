@@ -15,7 +15,7 @@
 	<div id="container_container">
 		<div id="container">
 			<div id="header">
-				<div id="navigation" class="right">
+				<div id="navigation" class="right" hidden>
 					{% if auth != "header" %}
 					<a href="{{ sitepath }}">Upload</a> |
 					<a href="{{ sitepath }}paste/">Paste</a> |
@@ -29,8 +29,10 @@
 			</div>
 
 			{% block content %}{% endblock %}
+
 			<div id="footer">
-				<p>{{ extra_footer_text }}  </p><a href="https://github.com/zizzydizzymc/linx-server">linx-server</a>
+				<p> rFSrv </p>
+				<!--<a href="https://github.com/andreimarcu/linx-server">linx-server</a>-->
 			</div>
 
 		</div>

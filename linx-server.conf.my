@@ -1,0 +1,12 @@
+#a configuation for myself to upload
+bind = 0.0.0.0:7000
+sitename = rFSrv
+#siteurl = https://mylinx.example.org/
+selifpath = fsv
+maxsize = 4294967296
+#maxexpiry = 86400
+allowhotlink = true
+remoteuploads = true
+nologs = true
+force-random-filename = false
+cleanup-every-minutes = 160

@@ -24,6 +24,12 @@ You can see what it looks like using the demo: [https://put.icu/](https://put.ic
 - Torrent download of files using web seeding
 - File expiry, deletion key, file access key, and random filename options
 
+### PlusFeaturesThisRepo
+
+- Make the upload/paste/API invisible
+- At the same time limit the upload to a very small size to avoid other people to upload
+- Two simple configuration, one regular guard and one for self
+
 
 ### Screenshots
 <img width="730" src="https://user-images.githubusercontent.com/4650950/76579039-03c82680-6488-11ea-8e23-4c927386fbd9.png" />
