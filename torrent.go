@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/andreimarcu/linx-server/backends"
-	"github.com/andreimarcu/linx-server/expiry"
-	"github.com/andreimarcu/linx-server/torrent"
+	"github.com/superryanguo/linx-server/backends"
+	"github.com/superryanguo/linx-server/expiry"
+	"github.com/superryanguo/linx-server/torrent"
 	"github.com/zeebo/bencode"
 	"github.com/zenazn/goji/web"
 )

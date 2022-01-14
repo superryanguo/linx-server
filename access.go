@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/andreimarcu/linx-server/backends"
+	"github.com/superryanguo/linx-server/backends"
 	"github.com/flosch/pongo2"
 	"github.com/zenazn/goji/web"
 )

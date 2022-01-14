@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/andreimarcu/linx-server/backends"
-	"github.com/andreimarcu/linx-server/expiry"
-	"github.com/andreimarcu/linx-server/httputil"
+	"github.com/superryanguo/linx-server/backends"
+	"github.com/superryanguo/linx-server/expiry"
+	"github.com/superryanguo/linx-server/httputil"
 	"github.com/zenazn/goji/web"
 )
 

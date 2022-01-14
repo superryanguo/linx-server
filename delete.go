@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/andreimarcu/linx-server/backends"
+	"github.com/superryanguo/linx-server/backends"
 	"github.com/zenazn/goji/web"
 )
 

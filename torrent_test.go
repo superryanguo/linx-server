@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/andreimarcu/linx-server/torrent"
+	"github.com/superryanguo/linx-server/torrent"
 	"github.com/zeebo/bencode"
 )
 

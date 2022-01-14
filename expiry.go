@@ -3,7 +3,7 @@ package main
 import (
 	"time"
 
-	"github.com/andreimarcu/linx-server/expiry"
+	"github.com/superryanguo/linx-server/expiry"
 	"github.com/dustin/go-humanize"
 )
 
