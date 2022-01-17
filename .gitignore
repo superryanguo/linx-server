@@ -28,6 +28,7 @@ _testmain.go
 *.test
 *.prof
 
+watermark/*.png
 linx-server
 linx-cleanup/linx-cleanup
 linx-genkey/linx-genkey
