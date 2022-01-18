@@ -8,13 +8,13 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/superryanguo/linx-server/backends"
-	"github.com/superryanguo/linx-server/helpers"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+	"github.com/superryanguo/linx-server/backends"
+	"github.com/superryanguo/linx-server/helpers"
 )
 
 type S3Backend struct {
@@ -156,7 +156,7 @@ func unmapMetadata(input map[string]*string) (m backends.Metadata, err error) {
 	return
 }
 
-func (b S3Backend) Put(key string, r io.Reader, expiry time.Time, deleteKey, accessKey string, srcIp string) (m backends.Metadata, err error) {
+func (b S3Backend) Put(key string, r io.Reader, expiry time.Time, deleteKey, accessKey string, srcIp string, water string) (m backends.Metadata, err error) {
 	tmpDst, err := ioutil.TempFile("", "linx-server-upload")
 	if err != nil {
 		return m, err

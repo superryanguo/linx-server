@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"path"
@@ -11,6 +12,7 @@ import (
 
 	"github.com/superryanguo/linx-server/backends"
 	"github.com/superryanguo/linx-server/helpers"
+	wm "github.com/superryanguo/linx-server/watermark"
 )
 
 type LocalfsBackend struct {
@@ -108,7 +110,6 @@ func (b LocalfsBackend) writeMetadata(key string, metadata backends.Metadata) er
 		Expiry:       metadata.Expiry.Unix(),
 		Size:         metadata.Size,
 		SrcIp:        metadata.SrcIp,
-		
 	}
 
 	dst, err := os.Create(metaPath)
@@ -127,7 +128,7 @@ func (b LocalfsBackend) writeMetadata(key string, metadata backends.Metadata) er
 	return nil
 }
 
-func (b LocalfsBackend) Put(key string, r io.Reader, expiry time.Time, deleteKey, accessKey string, srcIp string) (m backends.Metadata, err error) {
+func (b LocalfsBackend) Put(key string, r io.Reader, expiry time.Time, deleteKey, accessKey string, srcIp string, water string) (m backends.Metadata, err error) {
 	filePath := path.Join(b.filesPath, key)
 
 	dst, err := os.Create(filePath)
@@ -143,6 +144,20 @@ func (b LocalfsBackend) Put(key string, r io.Reader, expiry time.Time, deleteKey
 	} else if err != nil {
 		os.Remove(filePath)
 		return m, err
+	}
+
+	if len(water) != 0 {
+		var err error
+		switch water {
+		case "left":
+			err = wm.WaterMark(filePath, wm.WaterImg, filePath, false)
+		case "right":
+			err = wm.WaterMark(filePath, wm.WaterImg, filePath, true)
+		}
+		//do not return when there's a error
+		if err != nil {
+			log.Printf("watermark has error=%v\n", err)
+		}
 	}
 
 	dst.Seek(0, 0)

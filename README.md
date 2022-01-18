@@ -1,6 +1,7 @@
 linx-server 
 ======
 
+Forked from the https://github.com/andreimarcu/linx-server
 Self-hosted file/media sharing website.  
 
 ### Demo
@@ -23,6 +24,7 @@ You can see what it looks like using the demo: [https://put.icu/](https://put.ic
 - Documented API with keys for restricting uploads
 - Torrent download of files using web seeding
 - File expiry, deletion key, file access key, and random filename options
+- Watermark the picture when upload
 
 ### PlusFeaturesThisRepo
 

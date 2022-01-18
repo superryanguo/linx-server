@@ -16,12 +16,12 @@ import (
 	"time"
 
 	rice "github.com/GeertJohan/go.rice"
+	"github.com/flosch/pongo2"
 	"github.com/superryanguo/linx-server/auth/apikeys"
 	"github.com/superryanguo/linx-server/backends"
 	"github.com/superryanguo/linx-server/backends/localfs"
 	"github.com/superryanguo/linx-server/backends/s3"
 	"github.com/superryanguo/linx-server/cleanup"
-	"github.com/flosch/pongo2"
 	"github.com/vharitonsky/iniflags"
 	"github.com/zenazn/goji/graceful"
 	"github.com/zenazn/goji/web"
@@ -80,6 +80,7 @@ var Config struct {
 	maxDurationSize           int64
 	disableAccessKey          bool
 	defaultRandomFilename     bool
+	waterMark                 string
 }
 
 var Templates = make(map[string]*pongo2.Template)
@@ -219,7 +220,7 @@ func setup() *web.Mux {
 	mux.Delete(Config.sitePath+":name", deleteHandler)
 	// Adding new delete path method to make linx-server usable with ShareX.
 	mux.Get(Config.sitePath+"delete/:name", deleteHandler)
-	
+
 	mux.Get(Config.sitePath+"static/*", staticHandler)
 	mux.Get(Config.sitePath+"favicon.ico", staticHandler)
 	mux.Get(Config.sitePath+"robots.txt", staticHandler)
@@ -309,6 +310,8 @@ func main() {
 		"Force path-style addressing for S3 (e.g. https://s3.amazonaws.com/linx/example.txt)")
 	flag.BoolVar(&Config.forceRandomFilename, "force-random-filename", false,
 		"Force all uploads to use a random filename")
+	flag.StringVar(&Config.waterMark, "water-mark", "",
+		"watermark the picture with the local image(./watermark/w1.png), empty mean no watermark, you can also choose right and left")
 	flag.Uint64Var(&Config.accessKeyCookieExpiry, "access-cookie-expiry", 0, "Expiration time for access key cookies in seconds (set 0 to use session cookies)")
 	flag.StringVar(&Config.customPagesDir, "custompagespath", "",
 		"path to directory containing .md files to render as custom pages")
